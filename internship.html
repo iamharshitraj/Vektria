@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Domains - Vektria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 80px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 100%;
+        }
+        
+        .logo-img {
+            width: 200px;
+            height: 200px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ED1C24;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ED1C24;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ED1C24;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #C4171D;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(237, 28, 36, 0.9), rgba(196, 23, 29, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Domains Section */
+        .domains {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .domain-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ED1C24;
+        }
+        
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .domain-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ED1C24 0%, #C4171D 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .domain-card h3 {
+            margin-bottom: 15px;
+            color: #1e293b;
+            font-size: 1.5rem;
+        }
+        
+        .domain-card p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .domain-details {
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .domain-details ul {
+            list-style: none;
+            margin-left: 10px;
+        }
+        
+        .domain-details li {
+            margin-bottom: 10px;
+            color: #64748b;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .domain-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ED1C24;
+            font-weight: bold;
+        }
+        
+        .apply-btn {
+            padding: 12px 24px;
+            background-color: #ED1C24;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .apply-btn:hover {
+            background-color: #C4171D;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: linear-gradient(rgba(237, 28, 36, 0.05), rgba(196, 23, 29, 0.05));
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: #ED1C24;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        .benefit-card p {
+            color: #64748b;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.9)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ED1C24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #ED1C24;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #ED1C24;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+      @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .categories-grid,
+    .features-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .categories,
+    .features {
+        background-attachment: scroll;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
+    
+    /* Fixed logo sizing for mobile */
+    .logo-img {
+        width: 80px;  /* Reduced from 200px */
+        height: 80px; /* Reduced from 200px */
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo-container">
+                    <div class="logo-img">
+                        <img src="ChatGPT Image Aug 22, 2025, 01_45_56 PM.png" alt="Vektria Logo">
+                    </div>
+                    <div class="logo-text"></div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="internship.html">Internship</a></li>
+                    <li><a href="#verification">Verification</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX3xaYZc-OXTakXnmz_53t1QfXX0jMF_OYwMG2zmJ26j91BQ/viewform?usp=sharing&ouid=102082614357480184847" class="btn">Apply Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Vektria Internship Programs</h1>
+                <p>Gain real-world experience, learn from industry experts, and build your professional network with our comprehensive internship programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domains Section -->
+    <section class="domains">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Internship Domains</h2>
+                <p>Choose from our diverse range of internship opportunities designed to kickstart your career</p>
+            </div>
+            
+            <div class="domains-grid">
+                <!-- Web Development Card -->
+                <div class="domain-card">
+                    <div class="domain-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Build responsive websites and web applications using modern technologies</p>
+                    
+                    <div class="domain-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Frontend development with HTML, CSS, JavaScript</li>
+                            <li>React, Angular, or Vue.js frameworks</li>
+                            <li>Backend development with Node.js, Python, or PHP</li>
+                            <li>Database management and API integration</li>
+                            <li>Deployment and DevOps practices</li>
+                        </ul>
+                        
+                        <h4>Duration:</h4>
+                        <p>3-6 months, flexible scheduling available</p>
+                        
+                        <h4>Prerequisites:</h4>
+                        <p>Basic programming knowledge, familiarity with HTML/CSS</p>
+                    </div>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX3xaYZc-OXTakXnmz_53t1QfXX0jMF_OYwMG2zmJ26j91BQ/viewform?usp=sharing&ouid=102082614357480184847" class="apply-btn">APPLY NOW</a>
+                </div>
+                
+                <!-- App Development Card -->
+                <div class="domain-card">
+                    <div class="domain-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>App Development</h3>
+                    <p>Create innovative mobile applications for iOS and Android platforms</p>
+                    
+                    <div class="domain-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Native iOS development with Swift</li>
+                            <li>Native Android development with Kotlin</li>
+                            <li>Cross-platform development with React Native or Flutter</li>
+                            <li>UI/UX design principles for mobile</li>
+                            <li>App store deployment and maintenance</li>
+                        </ul>
+                        
+                        <h4>Duration:</h4>
+                        <p>3-6 months, with project-based learning</p>
+                        
+                        <h4>Prerequisites:</h4>
+                        <p>Basic programming knowledge, understanding of OOP concepts</p>
+                    </div>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX3xaYZc-OXTakXnmz_53t1QfXX0jMF_OYwMG2zmJ26j91BQ/viewform?usp=sharing&ouid=102082614357480184847" class="apply-btn">APPLY NOW</a>
+                </div>
+                
+                <!-- AI Development Card -->
+                <div class="domain-card">
+                    <div class="domain-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Work on cutting-edge AI projects and develop intelligent systems</p>
+                    
+                    <div class="domain-details">
+                        <h4>What You'll Learn:</h4>
+                        <ul>
+                            <li>Machine learning algorithms and techniques</li>
+                            <li>Neural networks and deep learning</li>
+                            <li>Natural language processing (NLP)</li>
+                            <li>Computer vision and image recognition</li>
+                            <li>AI model deployment and optimization</li>
+                        </ul>
+                        
+                        <h4>Duration:</h4>
+                        <p>4-8 months, with research components</p>
+                        
+                        <h4>Prerequisites:</h4>
+                        <p>Strong programming skills, knowledge of Python, linear algebra, and statistics</p>
+                    </div>
+                    
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeX3xaYZc-OXTakXnmz_53t1QfXX0jMF_OYwMG2zmJ26j91BQ/viewform?usp=sharing&ouid=102082614357480184847" class="apply-btn">APPLY NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Vektria Internships?</h2>
+                <p>We provide exceptional opportunities for growth and professional development</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Expert Mentorship</h3>
+                    <p>Work directly with experienced professionals who guide you through your internship journey.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Real Projects</h3>
+                    <p>Contribute to actual client projects and build a portfolio of meaningful work.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Verified Certification</h3>
+                    <p>Receive a verified certificate and letter of recommendation upon successful completion.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Job Opportunities</h3>
+                    <p>Top-performing interns receive full-time employment offers at the end of their program.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hear From Our Past Interns</h2>
+                <p>See how our internship programs have transformed careers</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"My web development internship at Vektria gave me the practical experience I needed to land my first job. The mentorship was exceptional, and I worked on real client projects that are now live on the web!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4>Jessica Miller</h4>
+                            <p>Frontend Developer at TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The AI internship exceeded my expectations. I was able to contribute to a machine learning project that's now being used by actual customers. The skills I gained were instrumental in securing my current position."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Ryan Thompson</h4>
+                            <p>Machine Learning Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"As a mobile development intern, I published my first app on the Play Store during the program. The guidance from my mentor and the hands-on experience were invaluable to my career development."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Sophia Williams</h4>
+                            <p>Android Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Vektria</h3>
+                    <p>The premier platform for skill development and internship opportunities in technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#internship">Internship</a></li>
+                        <li><a href="#verification">Verification</a></li>
+                        
+                        <li><a href="about_us.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> internships@vektria.com</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Vektria. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe domain cards
+            document.querySelectorAll('.domain-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Animate benefit cards
+            document.querySelectorAll('.benefit-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Animate testimonial cards
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
